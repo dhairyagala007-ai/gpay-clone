@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GPay Clone</title>
+  <link rel="stylesheet" href="./style.css">
+<script src="./script.js"></script>
+</head>
+<body>
+
+<div class="phone">
+  <div class="screen">
+
+<!-- PAYMENT SCREEN -->
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,28 +26,60 @@
 <div class="phone">
   <div class="screen">
 
-    <div id="payment-screen">
-      <h2>Pay</h2>
-      
-      <p class="receiver">Enter UPI ID or Phone</p>
 
-<input type="text" id="receiver" placeholder="UPI ID or Phone Number">
-<input type="number" id="amount" placeholder="Enter amount">
+<!-- STEP 1 -->
+ <div id="step1">
+ <div class="logo">
+  <img src="payu.png.png" alt="PayU Logo">
+</div>
 
-<button onclick="payNow()">Pay</button>
+  <input type="text" id="receiver" placeholder="UPI ID or Phone">
+  <input type="number" id="amount" placeholder="Amount (₹)">
 
-      
-    </div>
+  <button onclick="goToPin()">Continue</button>
+</div>
 
-    <div id="success-screen" class="hidden">
-      <div class="checkmark">✔</div>
-      <h2>Payment Successful</h2>
-      <p id="success-text"></p>
-    </div>
+<!-- STEP 2 -->
+<div id="step2" class="hidden">
+  <h2>Enter UPI PIN</h2>
+<h1 id="amount-display"></h1>
+  <input type="password" id="pin" maxlength="4" placeholder="••••">
+
+  <button onclick="makePayment()">Pay</button>
+</div>
+
+<!-- STEP 3 -->
+<div id="step3" class="hidden">
+  <div class="checkmark">✔</div>
+  <h2>Payment Successful</h2>
+  <p id="success-text"></p>
+<button onclick="showReceipt()">View Details</button>
+
+  <button onclick="location.reload()">New Payment</button>
+</div>
+
+<!-- STEP 4: RECEIPT -->
+
+<div id="step4" class="hidden">
+  <h2>Transaction Details</h2>
+
+  <div class="receipt">
+    <p><strong>Status:</strong> Successful ✅</p>
+    <p><strong>Amount:</strong> <span id="r-amount"></span></p>
+    <p><strong>To:</strong> <span id="r-receiver"></span></p>
+    <p><strong>Date:</strong> <span id="r-date"></span></p>
+    <p><strong>Transaction ID:</strong> <span id="r-id"></span></p>
+  </div>
+
+<button onclick="location.reload()">Done</button>
+
+</div>
 
   </div>
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
+
