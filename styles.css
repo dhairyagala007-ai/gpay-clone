@@ -62,3 +62,14 @@ button {
   margin-top: 100px;
   color: #22c55e;
 }
+
+input {
+  font-size: 18px;
+  text-align: center;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+  transition: 0.2s;
+}

@@ -1,17 +1,49 @@
 function payNow() {
-  const amount = document.getElementById("amount").value;
+const receiver = document.getElementById("receiver").value.trim();
+const amount = document.getElementById("amount").value.trim();
 
-  if (amount === "") {
-    alert("Enter amount");
-    return;
-  }
+// Validation
+if (receiver === "" || amount === "") {
+alert("Please enter all details");
+return;
+}
 
-  document.getElementById("payment-screen").innerHTML = "<p style='text-align:center;margin-top:200px;'>Processing...</p>";
+if (!receiver.includes("@") && receiver.length !== 10) {
+alert("Enter valid UPI ID or Phone Number");
+return;
+}
 
-  setTimeout(() => {
-    document.getElementById("payment-screen").style.display = "none";
-    document.getElementById("success-screen").classList.remove("hidden");
+if (amount <= 0) {
+alert("Enter valid amount");
+return;
+}
 
-    document.getElementById("success-text").innerText = `₹${amount} paid successfully`;
-  }, 2000);
+// Move to PIN screen
+document.getElementById("payment-screen").style.display = "none";
+document.getElementById("pin-screen").classList.remove("hidden");
+}
+
+function verifyPin() {
+const pin = document.getElementById("pin").value;
+
+if (pin.length !== 4 || isNaN(pin)) {
+alert("Enter valid 4-digit PIN");
+return;
+}
+
+// Show processing
+document.getElementById("pin-screen").innerHTML =
+"Processing...";
+
+setTimeout(() => {
+document.getElementById("pin-screen").style.display = "none";
+document.getElementById("success-screen").classList.remove("hidden");
+
+const receiver = document.getElementById("receiver").value;
+const amount = document.getElementById("amount").value;
+
+document.getElementById("success-text").innerText =
+  `₹${amount} paid to ${receiver} successfully`;
+
+}, 2000);
 }

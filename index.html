@@ -23,9 +23,15 @@
       
     </div>
 
+    <div id="pin-screen" class="hidden">
+  <h2>Enter UPI PIN</h2>
+  <input type="password" id="pin" placeholder="Enter 4-digit PIN">
+  <button onclick="verifyPin()">Confirm</button>
+</div>
+
     <div id="success-screen" class="hidden">
       <div class="checkmark">✔</div>
-      <h2>Payment Successful</h2>
+      
       <p id="success-text"></p>
     </div>
 
