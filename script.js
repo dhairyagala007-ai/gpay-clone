@@ -1,25 +1,28 @@
-function payNow() {
-  const receiver = document.getElementById("receiver").value.trim();
-  const amount = document.getElementById("amount").value.trim();
+function processPayment() {
+  const pin = document.getElementById("pin").value;
 
-  if (receiver === "" || amount === "") {
-    alert("Please enter all details");
+  if (pin.length !== 4 || isNaN(pin)) {
+    alert("Enter valid 4-digit PIN");
     return;
   }
 
-  if (!receiver.includes("@") && !/^\d{10}$/.test(receiver)) {
-    alert("Enter valid UPI ID or Phone Number");
-    return;
-  }
+  // Hide step 2
+  document.getElementById("step2").classList.add("hidden");
 
-  if (Number(amount) <= 0) {
-    alert("Enter valid amount");
-    return;
-  }
+  // Show loader
+  document.getElementById("loader-screen").classList.remove("hidden");
 
-  document.getElementById("payment-screen").classList.add / remove;
-  document.getElementById("pin-screen").innerHTML =
-"<p class='processing'>Processing payment...</p>";
+  // After 2 sec → show success
+  setTimeout(() => {
+    document.getElementById("loader-screen").classList.add("hidden");
+    document.getElementById("step3").classList.remove("hidden");
+
+    const receiver = document.getElementById("receiver").value;
+    const amount = document.getElementById("amount").value;
+
+    document.getElementById("success-text").innerText =
+      `₹${amount} paid to ${receiver}`;
+  }, 2000);
 }
 
 function goToPin() {

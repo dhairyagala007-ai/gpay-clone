@@ -4,23 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <title>GPay Clone</title>
-  <link rel="stylessheet" href="./styles.css">
-<script src="./script.js"></script>
+  <link rel="stylesheet" href="./styles.css">
+
+
 </head>
-<body>
-
-<div class="phone">
-  <div class="screen">
-
-<!-- PAYMENT SCREEN -->
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>GPay Clone</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<script src="script.js"></script>
 <body>
 
 <div class="phone">
@@ -45,7 +33,12 @@
 <h1 id="amount-display"></h1>
   <input type="password" id="pin" maxlength="4" placeholder="••••">
 
-  <button onclick="makePayment()">Pay</button>
+  <button onclick="processPayment()">Pay</button>
+</div>
+             <!--Loader -->
+<div id="loader-screen" class="hidden">
+  <h2>Processing Payment...</h2>
+  <div class="loader"></div>
 </div>
 
 <!-- STEP 3 -->
@@ -76,9 +69,8 @@
 </div>
 
   </div>
-</div>
 
-<script src="script.js"></script>
+</div>
 
 </body>
 </html>
